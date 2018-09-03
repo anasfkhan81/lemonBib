@@ -1,0 +1,79 @@
+@prefix : <http://lari-datasets.ilc.cnr.it/lemonBib#> .
+@prefix cito: <http://purl.org/spar/cito/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix lexinfo: <http://www.lexinfo.net/ontology/2.0/lexinfo#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Attestation a rdfs:Class ;
+    rdfs:label "Attestation"@en ;
+    rdfs:comment "'Attestation' is a class that consists of individuals that reifies the relationship of lexical attestation between an element in a lexicon and a bibliographic element"@en .
+
+<http://lari-datasets.ilc.cnr.it/lemonBib#> a owl:Ontology ;
+    dct:contributor <http://www.ilc.cnr.it/en/content/anas_fahad_khan> ;
+    dct:description "lemonBib is an extension of the ontolex-lemon model that provides concepts and properties that are useful in representing lexical attestations."@en ;
+    dct:issued "2018-05-24" ;
+    dct:rights "CC-BY" ;
+    dct:title "lemonBib"@en ;
+    owl:imports <http://www.w3.org/ns/lemon/all>,
+        <http://www.w3.org/ns/lemon/ontolex> ;
+    owl:versionInfo "Version 0.1.0" .
+
+:attestationCitation a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "attestation citation"@en ;
+    rdfs:comment "'attestationCitation' is an object property that relates an Attestation with a citation."@en ;
+    rdfs:domain :Attestation .
+
+:attests a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "attests"@en ;
+    rdfs:comment "'isAttestedBy' is an object property that relates an individual of the class with a lexical element."@en ;
+    rdfs:domain :Attestation .
+
+:conjectural a rdf:Property,
+        owl:DatatypeProperty ;
+    rdfs:label "conjectural"@en ;
+    rdfs:comment "'conjectural' is a datatype property that relates an Attestation with a boolean value that specifies if it refers to a conjectural text or not."@en ;
+    rdfs:domain :Attestation ;
+    rdfs:range xsd:boolean .
+
+:foundIn a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "found in"@en ;
+    rdfs:comment "'foundIn' is an object property that relates an Attestation with a location in a text where it can be found."@en ;
+    rdfs:domain :Attestation .
+
+:hasBiblScope a rdf:Property,
+        owl:DatatypeProperty ;
+    rdfs:label "has bibliographic scope"@en ;
+    rdfs:comment "'hasBiblScope' is a datatype property that relates a bibliographic entity with specific bibliographic information."@en .
+
+:hasContext a rdf:Property,
+        owl:DatatypeProperty ;
+    rdfs:label "has context"@en ;
+    rdfs:comment "'hasContext' is a datatype property that relates an Attestation with a string."@en ;
+    rdfs:domain :Attestation ;
+    rdfs:range xsd:string .
+
+:hasURN a rdf:Property,
+        owl:DatatypeProperty ;
+    rdfs:label "has URN"@en ;
+    rdfs:comment "'hasURN' is a datatype property that relates a bibliographic entity with a string URN."@en .
+
+:involvedinAttestation a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "involved in attesation"@en ;
+    rdfs:comment "'involvedinAttestation' is an object property that relates a citation with an Attestation."@en ;
+    rdfs:range :Attestation .
+
+:isAttestedBy a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "is attested by"@en ;
+    rdfs:comment "'isAttestedBy' is an object property that relates a lexical element with an individual of the class Attestation."@en ;
+    rdfs:range :Attestation .
+
